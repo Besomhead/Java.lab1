@@ -33,6 +33,24 @@ public class Widget
 
         tabs.add(tab1, "Group1");
 
+        JPanel tab2 = new JPanel(new BorderLayout());
+
+        JTextField textpanel = new JTextField(30);
+
+        JButton swap1 = new JButton("Enter");
+        JButton swap2 = new JButton("Second button");
+
+        JPanel extrapanel = new JPanel(new FlowLayout());
+        extrapanel.setBackground(new Color(9, 55, 9));
+
+        extrapanel.add(textpanel);
+        extrapanel.add(swap1);
+
+        tab2.add(extrapanel, BorderLayout.SOUTH);
+        tab2.add(swap2, BorderLayout.NORTH);
+
+        tabs.add(tab2, "Group2");
+
         frame.add(tabs);
 
         frame.setVisible(true);
