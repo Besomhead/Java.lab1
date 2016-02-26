@@ -11,6 +11,7 @@ public class Widget
     static JTextField textpanel = new JTextField(30);
     static JButton swap1 = new JButton("Enter");
     static JButton swap2 = new JButton("Second button");
+    static JComboBox combobox = new JComboBox();
 
     public static void main(String[] args)
     {
@@ -36,15 +37,36 @@ public class Widget
         downpanel.add(textedit);
         downpanel.add(enter);
 
+        enter.addActionListener(new EnterActionListener());
+
         tab1.add(downpanel, BorderLayout.SOUTH);
-
-        String[] items = new String[10];
-
-        JComboBox combobox = new JComboBox(items);
 
         tab1.add(combobox, BorderLayout.NORTH);
 
         tabs.add(tab1, "Group1");
+    }
+
+    public static class EnterActionListener implements ActionListener
+    {
+        public void actionPerformed(ActionEvent event)
+        {
+            String temp = textedit.getText();
+            int i = 0;
+            boolean fl = false;
+            while ((!fl) && (i < combobox.getModel().getSize()))
+            {
+                Object currentItem = combobox.getItemAt(i);
+                if (temp.equals(currentItem.toString())) fl = true;
+                i++;
+            }
+
+            if (!fl) combobox.addItem(temp);
+            else
+            {
+                JOptionPane exist = new JOptionPane();
+                exist.showMessageDialog(frame, "Sorry, this item is already exist. Please try again.");
+            }
+        }
     }
 
     public static void SecondTabCreating()
