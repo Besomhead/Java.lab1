@@ -11,8 +11,6 @@ public class Widget
     static JButton swap1 = new JButton("Enter");
     static JButton swap2 = new JButton("Enter button name");
     static JComboBox combobox = new JComboBox();
-<<<<<<< HEAD
-=======
     static JTextField textField = new JTextField(30);
     static JRadioButton radioOption1 = new JRadioButton("15-18");
     static JRadioButton radioOption2 = new JRadioButton("19-22");
@@ -21,7 +19,6 @@ public class Widget
     static JCheckBox checkOption1 = new JCheckBox("Banana");
     static JCheckBox checkOption2 = new JCheckBox("Orange");
     static JCheckBox checkOption3 = new JCheckBox("Apple");
->>>>>>> extra
 
     public static void main(String[] args)
     {
@@ -31,12 +28,8 @@ public class Widget
 
         FirstTabCreating();
         SecondTabCreating();
-<<<<<<< HEAD
-
-=======
         ThirdTabCreating();
         FourthTabCreating();
->>>>>>> extra
 
         frame.add(tabs);
 
@@ -122,8 +115,6 @@ public class Widget
             swap1.setText(temp);
         }
     }
-<<<<<<< HEAD
-=======
 
     public static void ThirdTabCreating()
     {
@@ -218,5 +209,4 @@ public class Widget
                     }
         }
     }
->>>>>>> extra
 }
