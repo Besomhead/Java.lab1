@@ -10,7 +10,7 @@ public class Widget
     static JTextField textedit = new JTextField(30);
     static JTextField textpanel = new JTextField(30);
     static JButton swap1 = new JButton("Enter");
-    static JButton swap2 = new JButton("Second button");
+    static JButton swap2 = new JButton("Enter button name");
     static JComboBox combobox = new JComboBox();
 
     public static void main(String[] args)
