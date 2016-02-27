@@ -5,7 +5,6 @@ import java.awt.event.*;
 public class Widget
 {
     static JFrame frame = new JFrame("Widget");
-    static JButton enter = new JButton("Enter");
     static JTabbedPane tabs = new JTabbedPane();
     static JTextField textedit = new JTextField(30);
     static JTextField textpanel = new JTextField(30);
@@ -13,10 +12,13 @@ public class Widget
     static JButton swap2 = new JButton("Enter button name");
     static JComboBox combobox = new JComboBox();
     static JTextField textField = new JTextField(30);
-    static JButton select = new JButton("Select");
     static JRadioButton radioOption1 = new JRadioButton("15-18");
     static JRadioButton radioOption2 = new JRadioButton("19-22");
     static JRadioButton radioOption3 = new JRadioButton("23-26");
+    static JTextField textLine = new JTextField(30);
+    static JCheckBox checkOption1 = new JCheckBox("Banana");
+    static JCheckBox checkOption2 = new JCheckBox("Orange");
+    static JCheckBox checkOption3 = new JCheckBox("Apple");
 
     public static void main(String[] args)
     {
@@ -27,6 +29,7 @@ public class Widget
         FirstTabCreating();
         SecondTabCreating();
         ThirdTabCreating();
+        FourthTabCreating();
 
         frame.add(tabs);
 
@@ -38,6 +41,7 @@ public class Widget
         JPanel tab1 = new JPanel(new BorderLayout());
         JPanel downpanel = new JPanel(new FlowLayout());
         downpanel.setBackground(new Color(9, 55, 9));
+        JButton enter = new JButton("Enter");
 
         downpanel.add(textedit);
         downpanel.add(enter);
@@ -119,6 +123,7 @@ public class Widget
         linePanel.setBackground(new Color(9, 55, 9));
         JPanel buttonBox = new JPanel(new GridLayout(3, 1));
         JLabel question = new JLabel("How old are you?");
+        JButton select = new JButton("Select");
 
         linePanel.add(textField);
         linePanel.add(select);
@@ -161,6 +166,47 @@ public class Widget
                             wrongOption.showMessageDialog(frame, "Sorry, this option does not exist. Please try again.");
                         }
             }
+        }
+    }
+
+    public static void FourthTabCreating()
+    {
+        JPanel tab4 = new JPanel(new BorderLayout());
+        JPanel greenPanel = new JPanel(new FlowLayout());
+        greenPanel.setBackground(new Color(9, 55, 9));
+        JPanel checkBoxPanel = new JPanel(new GridLayout(3, 1));
+        JLabel title = new JLabel("Choose your favourite fruit:");
+        JButton choose = new JButton("Choose");
+        choose.addActionListener(new ChooseActionListener());
+
+        greenPanel.add(textLine);
+        greenPanel.add(choose);
+
+        checkBoxPanel.add(checkOption1);
+        checkBoxPanel.add(checkOption2);
+        checkBoxPanel.add(checkOption3);
+
+        tab4.add(title, BorderLayout.NORTH);
+        tab4.add(checkBoxPanel, BorderLayout.CENTER);
+        tab4.add(greenPanel, BorderLayout.SOUTH);
+
+        tabs.add(tab4, "Group4");
+    }
+
+    public static class ChooseActionListener implements ActionListener
+    {
+        public void actionPerformed(ActionEvent event)
+        {
+            if (textLine.getText().equals(checkOption1.getText())) checkOption1.setSelected(true);
+            else
+                if (textLine.getText().equals(checkOption2.getText())) checkOption2.setSelected(true);
+                else
+                    if (textLine.getText().equals(checkOption3.getText())) checkOption3.setSelected(true);
+                    else
+                    {
+                        JOptionPane notExist = new JOptionPane();
+                        notExist.showMessageDialog(frame, "Sorry, this option does not exist. Please try again.");
+                    }
         }
     }
 }
