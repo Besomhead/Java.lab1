@@ -4,81 +4,88 @@ import java.awt.event.*;
 
 public class Widget
 {
-    static JFrame frame = new JFrame("Widget");
-    static JTabbedPane tabs = new JTabbedPane();
-    static JTextField textedit = new JTextField(30);
-    static JTextField textpanel = new JTextField(30);
-    static JButton swap1 = new JButton("Enter");
-    static JButton swap2 = new JButton("Enter button name");
-    static JComboBox combobox = new JComboBox();
-    static JTextField textField = new JTextField(30);
-    static JRadioButton radioOption1 = new JRadioButton("15-18");
-    static JRadioButton radioOption2 = new JRadioButton("19-22");
-    static JRadioButton radioOption3 = new JRadioButton("23-26");
-    static JTextField textLine = new JTextField(30);
-    static JCheckBox checkOption1 = new JCheckBox("Banana");
-    static JCheckBox checkOption2 = new JCheckBox("Orange");
-    static JCheckBox checkOption3 = new JCheckBox("Apple");
+    static private JFrame frame = new JFrame("Widget");
+    static private JTabbedPane tabs = new JTabbedPane();
+    static private JTextField textEdit = new JTextField(30);
+    static private JTextField textPanel = new JTextField(30);
+    static private JButton swap1 = new JButton("Enter");
+    static private JButton swap2 = new JButton("Enter button name");
+    static private JComboBox comboBox = new JComboBox();
+    static private JTextField textField = new JTextField(30);
+    static private JRadioButton radioOption1 = new JRadioButton("15-18");
+    static private JRadioButton radioOption2 = new JRadioButton("19-22");
+    static private JRadioButton radioOption3 = new JRadioButton("23-26");
+    static private JTextField textLine = new JTextField(30);
+    static private JCheckBox checkOption1 = new JCheckBox("Banana");
+    static private JCheckBox checkOption2 = new JCheckBox("Orange");
+    static private JCheckBox checkOption3 = new JCheckBox("Apple");
+    static private JTextField addLine = new JTextField(30);
+    static private TableModel model = new TableModel();
+    static private JTable table = new JTable(model);
 
     public static void main(String[] args)
     {
         frame.setSize(600, 400);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
 
         FirstTabCreating();
         SecondTabCreating();
         ThirdTabCreating();
         FourthTabCreating();
+        FifthTabCreating();
 
         frame.add(tabs);
 
         frame.setVisible(true);
+        frame.pack();
     }
 
-    public static void FirstTabCreating()
+    private static void FirstTabCreating()
     {
         JPanel tab1 = new JPanel(new BorderLayout());
         JPanel downpanel = new JPanel(new FlowLayout());
         downpanel.setBackground(new Color(9, 55, 9));
         JButton enter = new JButton("Enter");
 
-        downpanel.add(textedit);
+        downpanel.add(textEdit);
         downpanel.add(enter);
 
         enter.addActionListener(new EnterActionListener());
 
         tab1.add(downpanel, BorderLayout.SOUTH);
 
-        tab1.add(combobox, BorderLayout.NORTH);
+        tab1.add(comboBox, BorderLayout.NORTH);
 
         tabs.add(tab1, "Group1");
     }
 
-    public static class EnterActionListener implements ActionListener
+    private static class EnterActionListener implements ActionListener
     {
         public void actionPerformed(ActionEvent event)
         {
-            String temp = textedit.getText();
+            String temp = textEdit.getText();
             int i = 0;
             boolean fl = false;
-            while ((!fl) && (i < combobox.getModel().getSize()))
+            while ((!fl) && (i < comboBox.getModel().getSize()))
             {
-                Object currentItem = combobox.getItemAt(i);
+                Object currentItem = comboBox.getItemAt(i);
                 if (temp.equals(currentItem.toString())) fl = true;
                 i++;
             }
 
-            if (!fl) combobox.addItem(temp);
+            if (!fl) comboBox.addItem(temp);
             else
             {
                 JOptionPane exist = new JOptionPane();
                 exist.showMessageDialog(frame, "Sorry, this item is already exist. Please try again.");
             }
+
+            textEdit.setText("");
         }
     }
 
-    public static void SecondTabCreating()
+    private static void SecondTabCreating()
     {
         JPanel tab2 = new JPanel(new BorderLayout());
 
@@ -88,7 +95,7 @@ public class Widget
         JPanel extrapanel = new JPanel(new FlowLayout());
         extrapanel.setBackground(new Color(9, 55, 9));
 
-        extrapanel.add(textpanel);
+        extrapanel.add(textPanel);
         extrapanel.add(swap1);
 
         tab2.add(extrapanel, BorderLayout.SOUTH);
@@ -97,16 +104,16 @@ public class Widget
         tabs.add(tab2, "Group2");
     }
 
-    public static class Swap1ActionListener implements ActionListener
+    private static class Swap1ActionListener implements ActionListener
     {
         public void actionPerformed(ActionEvent event)
         {
-            swap2.setText(textpanel.getText());
-            textpanel.setText("");
+            swap2.setText(textPanel.getText());
+            textPanel.setText("");
         }
     }
 
-    public static class Swap2ActionListener implements ActionListener
+    private static class Swap2ActionListener implements ActionListener
     {
         public void actionPerformed(ActionEvent event)
         {
@@ -116,7 +123,7 @@ public class Widget
         }
     }
 
-    public static void ThirdTabCreating()
+    private static void ThirdTabCreating()
     {
         JPanel tab3 = new JPanel(new BorderLayout());
         JPanel linePanel = new JPanel(new FlowLayout());
@@ -146,9 +153,9 @@ public class Widget
         tabs.add(tab3, "Group3");
     }
 
-    static String currentOption = "";
+    static private String currentOption = "";
 
-    public static class SelectActionListener implements ActionListener
+    private static class SelectActionListener implements ActionListener
     {
         public void actionPerformed(ActionEvent event)
         {
@@ -166,10 +173,12 @@ public class Widget
                             wrongOption.showMessageDialog(frame, "Sorry, this option does not exist. Please try again.");
                         }
             }
+
+            textField.setText("");
         }
     }
 
-    public static void FourthTabCreating()
+    private static void FourthTabCreating()
     {
         JPanel tab4 = new JPanel(new BorderLayout());
         JPanel greenPanel = new JPanel(new FlowLayout());
@@ -193,7 +202,7 @@ public class Widget
         tabs.add(tab4, "Group4");
     }
 
-    public static class ChooseActionListener implements ActionListener
+    private static class ChooseActionListener implements ActionListener
     {
         public void actionPerformed(ActionEvent event)
         {
@@ -207,6 +216,82 @@ public class Widget
                         JOptionPane notExist = new JOptionPane();
                         notExist.showMessageDialog(frame, "Sorry, this option does not exist. Please try again.");
                     }
+
+            textLine.setText("");
+        }
+    }
+
+    private static void FifthTabCreating()
+    {
+        JPanel tab5 = new JPanel(new BorderLayout());
+        JPanel addGroup = new JPanel(new FlowLayout());
+        addGroup.setBackground(new Color(9, 55, 9));
+        JButton add = new JButton("Add");
+        JPanel tableGroup = new JPanel(new GridBagLayout());
+        JButton toRight = new JButton("To Right");
+        JButton toLeft = new JButton("To Left");
+        JScrollPane scroller = new JScrollPane(table);
+
+        add.addActionListener(new AddActionListener());
+        toRight.addActionListener(new ToRightActionListener());
+        toLeft.addActionListener(new ToLeftActionListener());
+
+        addGroup.add(addLine);
+        addGroup.add(add);
+
+        tab5.add(addGroup, BorderLayout.SOUTH);
+
+        tableGroup.add(scroller,
+                new GridBagConstraints(10, 2, 1, 1, 1, 1,
+                        GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL,
+                        new Insets(2, 2, 2, 2), 0, 0));
+
+        tableGroup.add(toRight,
+                new GridBagConstraints(0, 0, 1, 1, 1, 1,
+                        GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL,
+                        new Insets(0, 0, 0, 0), 0, 0));
+
+        tableGroup.add(toLeft,
+                new GridBagConstraints(25, 0, 1, 1, 1, 1,
+                        GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL,
+                        new Insets(0, 0, 0, 0), 0, 0));
+
+        table.setRowSelectionAllowed(true);
+        table.setColumnSelectionAllowed(true);
+
+        tab5.add(tableGroup, BorderLayout.NORTH);
+
+        tabs.add(tab5, "Group5");
+    }
+
+    private static class AddActionListener implements ActionListener
+    {
+        public void actionPerformed(ActionEvent event)
+        {
+            String []newLine = new String[model.getColumnCount()];
+            newLine[0] = addLine.getText();
+
+            model.addData(newLine);
+            addLine.setText("");
+            model.fireTableDataChanged();
+        }
+    }
+
+    private static class ToRightActionListener implements ActionListener
+    {
+        public void actionPerformed(ActionEvent event)
+        {
+            model.toRight(table.getSelectedRow());
+            model.fireTableDataChanged();
+        }
+    }
+
+    private static class ToLeftActionListener implements ActionListener
+    {
+        public void actionPerformed(ActionEvent event)
+        {
+            model.toLeft(table.getSelectedRow());
+            model.fireTableDataChanged();
         }
     }
 }
