@@ -3,11 +3,6 @@ import java.util.ArrayList;
 
 public class TableModel extends AbstractTableModel
 {
-    private static final long serialVersionUID = 3883320516766981209L;
-
-    private int columnCount = 2;
-    private ArrayList<String []> dataList;
-
     public TableModel()
     {
         dataList = new ArrayList<String []>();
@@ -65,4 +60,8 @@ public class TableModel extends AbstractTableModel
             current[1] = "";
         }
     }
+
+    private int columnCount = 2;
+    private ArrayList<String []> dataList;
+
 }

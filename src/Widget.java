@@ -7,31 +7,7 @@ import java.util.TimerTask;
 
 public class Widget
 {
-    static private JFrame frame = new JFrame("Widget");
-    static private JTabbedPane tabs = new JTabbedPane();
-    static private JPanel downPanel = new JPanel(new FlowLayout());
-    static private JPanel extraPanel = new JPanel(new FlowLayout());
-    static private JPanel linePanel = new JPanel(new FlowLayout());
-    static private JPanel greenPanel = new JPanel(new FlowLayout());
-    static private JPanel addGroup = new JPanel(new FlowLayout());
-    static private JTextField textEdit = new JTextField(30);
-    static private JTextField textPanel = new JTextField(30);
-    static private JButton swap1 = new JButton("Enter");
-    static private JButton swap2 = new JButton("Enter button name");
-    static private JComboBox comboBox = new JComboBox();
-    static private JTextField textField = new JTextField(30);
-    static private JRadioButton radioOption1 = new JRadioButton("15-18");
-    static private JRadioButton radioOption2 = new JRadioButton("19-22");
-    static private JRadioButton radioOption3 = new JRadioButton("23-26");
-    static private JTextField textLine = new JTextField(30);
-    static private JCheckBox checkOption1 = new JCheckBox("Banana");
-    static private JCheckBox checkOption2 = new JCheckBox("Orange");
-    static private JCheckBox checkOption3 = new JCheckBox("Apple");
-    static private JTextField addLine = new JTextField(30);
-    static private TableModel model = new TableModel();
-    static private JTable table = new JTable(model);
-
-    public static void main(String[] args)
+    public void Manage()
     {
         frame.setSize(600, 400);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -51,7 +27,7 @@ public class Widget
         autoScroll();
     }
 
-    private static void FirstTabCreating()
+    private void FirstTabCreating()
     {
         JPanel tab1 = new JPanel(new BorderLayout());
         downPanel.setBackground(new Color(9, 55, 9));
@@ -69,7 +45,7 @@ public class Widget
         tabs.add(tab1, "Group1");
     }
 
-    private static class EnterActionListener implements ActionListener
+    private class EnterActionListener implements ActionListener
     {
         public void actionPerformed(ActionEvent event)
         {
@@ -94,7 +70,7 @@ public class Widget
         }
     }
 
-    private static void SecondTabCreating()
+    private void SecondTabCreating()
     {
         JPanel tab2 = new JPanel(new BorderLayout());
 
@@ -112,7 +88,7 @@ public class Widget
         tabs.add(tab2, "Group2");
     }
 
-    private static class Swap1ActionListener implements ActionListener
+    private class Swap1ActionListener implements ActionListener
     {
         public void actionPerformed(ActionEvent event)
         {
@@ -121,7 +97,7 @@ public class Widget
         }
     }
 
-    private static class Swap2ActionListener implements ActionListener
+    private class Swap2ActionListener implements ActionListener
     {
         public void actionPerformed(ActionEvent event)
         {
@@ -131,7 +107,7 @@ public class Widget
         }
     }
 
-    private static void ThirdTabCreating()
+    private void ThirdTabCreating()
     {
         JPanel tab3 = new JPanel(new BorderLayout());
         linePanel.setBackground(new Color(9, 55, 9));
@@ -160,9 +136,7 @@ public class Widget
         tabs.add(tab3, "Group3");
     }
 
-    static private String currentOption = "";
-
-    private static class SelectActionListener implements ActionListener
+    private class SelectActionListener implements ActionListener
     {
         public void actionPerformed(ActionEvent event)
         {
@@ -185,7 +159,7 @@ public class Widget
         }
     }
 
-    private static void FourthTabCreating()
+    private void FourthTabCreating()
     {
         JPanel tab4 = new JPanel(new BorderLayout());
         greenPanel.setBackground(new Color(9, 55, 9));
@@ -208,7 +182,7 @@ public class Widget
         tabs.add(tab4, "Group4");
     }
 
-    private static class ChooseActionListener implements ActionListener
+    private class ChooseActionListener implements ActionListener
     {
         public void actionPerformed(ActionEvent event)
         {
@@ -233,7 +207,7 @@ public class Widget
         }
     }
 
-    private static void FifthTabCreating()
+    private void FifthTabCreating()
     {
         JPanel tab5 = new JPanel(new BorderLayout());
         addGroup.setBackground(new Color(9, 55, 9));
@@ -275,7 +249,7 @@ public class Widget
         tabs.add(tab5, "Group5");
     }
 
-    private static class AddActionListener implements ActionListener
+    private class AddActionListener implements ActionListener
     {
         public void actionPerformed(ActionEvent event)
         {
@@ -288,7 +262,7 @@ public class Widget
         }
     }
 
-    private static class ToRightActionListener implements ActionListener
+    private class ToRightActionListener implements ActionListener
     {
         public void actionPerformed(ActionEvent event)
         {
@@ -297,7 +271,7 @@ public class Widget
         }
     }
 
-    private static class ToLeftActionListener implements ActionListener
+    private class ToLeftActionListener implements ActionListener
     {
         public void actionPerformed(ActionEvent event)
         {
@@ -306,7 +280,7 @@ public class Widget
         }
     }
 
-    private static void autoScroll()
+    private void autoScroll()
     {
         Random randomColor = new Random();
 
@@ -371,4 +345,29 @@ public class Widget
             }
         }, 40000, 95000);
     }
+
+    private JFrame frame = new JFrame("Widget");
+    private JTabbedPane tabs = new JTabbedPane();
+    private JPanel downPanel = new JPanel(new FlowLayout());
+    private JPanel extraPanel = new JPanel(new FlowLayout());
+    private JPanel linePanel = new JPanel(new FlowLayout());
+    private JPanel greenPanel = new JPanel(new FlowLayout());
+    private JPanel addGroup = new JPanel(new FlowLayout());
+    private JTextField textEdit = new JTextField(30);
+    private JTextField textPanel = new JTextField(30);
+    private JButton swap1 = new JButton("Enter");
+    private JButton swap2 = new JButton("Enter button name");
+    private JComboBox comboBox = new JComboBox();
+    private JTextField textField = new JTextField(30);
+    private JRadioButton radioOption1 = new JRadioButton("15-18");
+    private JRadioButton radioOption2 = new JRadioButton("19-22");
+    private JRadioButton radioOption3 = new JRadioButton("23-26");
+    private JTextField textLine = new JTextField(30);
+    private JCheckBox checkOption1 = new JCheckBox("Banana");
+    private JCheckBox checkOption2 = new JCheckBox("Orange");
+    private JCheckBox checkOption3 = new JCheckBox("Apple");
+    private JTextField addLine = new JTextField(30);
+    private TableModel model = new TableModel();
+    private JTable table = new JTable(model);
+    private String currentOption = "";
 }
