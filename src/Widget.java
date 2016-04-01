@@ -1,11 +1,19 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Widget
 {
     static private JFrame frame = new JFrame("Widget");
     static private JTabbedPane tabs = new JTabbedPane();
+    static private JPanel downPanel = new JPanel(new FlowLayout());
+    static private JPanel extraPanel = new JPanel(new FlowLayout());
+    static private JPanel linePanel = new JPanel(new FlowLayout());
+    static private JPanel greenPanel = new JPanel(new FlowLayout());
+    static private JPanel addGroup = new JPanel(new FlowLayout());
     static private JTextField textEdit = new JTextField(30);
     static private JTextField textPanel = new JTextField(30);
     static private JButton swap1 = new JButton("Enter");
@@ -39,21 +47,22 @@ public class Widget
 
         frame.setVisible(true);
         frame.pack();
+
+        autoScroll();
     }
 
     private static void FirstTabCreating()
     {
         JPanel tab1 = new JPanel(new BorderLayout());
-        JPanel downpanel = new JPanel(new FlowLayout());
-        downpanel.setBackground(new Color(9, 55, 9));
+        downPanel.setBackground(new Color(9, 55, 9));
         JButton enter = new JButton("Enter");
 
-        downpanel.add(textEdit);
-        downpanel.add(enter);
+        downPanel.add(textEdit);
+        downPanel.add(enter);
 
         enter.addActionListener(new EnterActionListener());
 
-        tab1.add(downpanel, BorderLayout.SOUTH);
+        tab1.add(downPanel, BorderLayout.SOUTH);
 
         tab1.add(comboBox, BorderLayout.NORTH);
 
@@ -92,13 +101,12 @@ public class Widget
         swap1.addActionListener(new Swap1ActionListener());
         swap2.addActionListener(new Swap2ActionListener());
 
-        JPanel extrapanel = new JPanel(new FlowLayout());
-        extrapanel.setBackground(new Color(9, 55, 9));
+        extraPanel.setBackground(new Color(9, 55, 9));
 
-        extrapanel.add(textPanel);
-        extrapanel.add(swap1);
+        extraPanel.add(textPanel);
+        extraPanel.add(swap1);
 
-        tab2.add(extrapanel, BorderLayout.SOUTH);
+        tab2.add(extraPanel, BorderLayout.SOUTH);
         tab2.add(swap2, BorderLayout.NORTH);
 
         tabs.add(tab2, "Group2");
@@ -126,7 +134,6 @@ public class Widget
     private static void ThirdTabCreating()
     {
         JPanel tab3 = new JPanel(new BorderLayout());
-        JPanel linePanel = new JPanel(new FlowLayout());
         linePanel.setBackground(new Color(9, 55, 9));
         JPanel buttonBox = new JPanel(new GridLayout(3, 1));
         JLabel question = new JLabel("How old are you?");
@@ -181,7 +188,6 @@ public class Widget
     private static void FourthTabCreating()
     {
         JPanel tab4 = new JPanel(new BorderLayout());
-        JPanel greenPanel = new JPanel(new FlowLayout());
         greenPanel.setBackground(new Color(9, 55, 9));
         JPanel checkBoxPanel = new JPanel(new GridLayout(3, 1));
         JLabel title = new JLabel("Choose your favourite fruit:");
@@ -206,11 +212,17 @@ public class Widget
     {
         public void actionPerformed(ActionEvent event)
         {
-            if (textLine.getText().equals(checkOption1.getText())) checkOption1.setSelected(true);
+            if (textLine.getText().equals(checkOption1.getText()))
+                if (checkOption1.isSelected()) checkOption1.setSelected(false);
+                else checkOption1.setSelected(true);
             else
-                if (textLine.getText().equals(checkOption2.getText())) checkOption2.setSelected(true);
+                if (textLine.getText().equals(checkOption2.getText()))
+                    if(checkOption2.isSelected()) checkOption2.setSelected(false);
+                    else checkOption2.setSelected(true);
                 else
-                    if (textLine.getText().equals(checkOption3.getText())) checkOption3.setSelected(true);
+                    if (textLine.getText().equals(checkOption3.getText()))
+                        if (checkOption3.isSelected()) checkOption3.setSelected(false);
+                        else checkOption3.setSelected(true);
                     else
                     {
                         JOptionPane notExist = new JOptionPane();
@@ -224,7 +236,6 @@ public class Widget
     private static void FifthTabCreating()
     {
         JPanel tab5 = new JPanel(new BorderLayout());
-        JPanel addGroup = new JPanel(new FlowLayout());
         addGroup.setBackground(new Color(9, 55, 9));
         JButton add = new JButton("Add");
         JPanel tableGroup = new JPanel(new GridBagLayout());
@@ -293,5 +304,71 @@ public class Widget
             model.toLeft(table.getSelectedRow());
             model.fireTableDataChanged();
         }
+    }
+
+    private static void autoScroll()
+    {
+        Random randomColor = new Random();
+
+        Timer scrollTimer = new Timer();
+        scrollTimer.schedule(new TimerTask()
+        {
+            public void run()
+            {
+                tabs.setSelectedIndex(0);
+                int r = randomColor.nextInt(255);
+                int g = randomColor.nextInt(255);
+                int b = randomColor.nextInt(255);
+                downPanel.setBackground(new Color(r, g, b));
+            }
+        }, 0, 55000);
+
+        scrollTimer.schedule(new TimerTask()
+        {
+            public void run()
+            {
+                tabs.setSelectedIndex(1);
+                int r = randomColor.nextInt(255);
+                int g = randomColor.nextInt(255);
+                int b = randomColor.nextInt(255);
+                extraPanel.setBackground(new Color(r, g, b));
+            }
+        }, 10000, 65000);
+
+        scrollTimer.schedule(new TimerTask()
+        {
+            public void run()
+            {
+                tabs.setSelectedIndex(2);
+                int r = randomColor.nextInt(255);
+                int g = randomColor.nextInt(255);
+                int b = randomColor.nextInt(255);
+                linePanel.setBackground(new Color(r, g, b));
+            }
+        }, 20000, 75000);
+
+        scrollTimer.schedule(new TimerTask()
+        {
+            public void run()
+            {
+                tabs.setSelectedIndex(3);
+                int r = randomColor.nextInt(255);
+                int g = randomColor.nextInt(255);
+                int b = randomColor.nextInt(255);
+                greenPanel.setBackground(new Color(r, g, b));
+            }
+        }, 30000, 85000);
+
+        scrollTimer.schedule(new TimerTask()
+        {
+            public void run()
+            {
+                tabs.setSelectedIndex(4);
+                int r = randomColor.nextInt(255);
+                int g = randomColor.nextInt(255);
+                int b = randomColor.nextInt(255);
+                addGroup.setBackground(new Color(r, g, b));
+            }
+        }, 40000, 95000);
     }
 }
