@@ -295,7 +295,7 @@ public class Widget
                 int b = randomColor.nextInt(255);
                 downPanel.setBackground(new Color(r, g, b));
             }
-        }, 0, 55000);
+        }, 0, 75000);
 
         scrollTimer.schedule(new TimerTask()
         {
@@ -307,7 +307,7 @@ public class Widget
                 int b = randomColor.nextInt(255);
                 extraPanel.setBackground(new Color(r, g, b));
             }
-        }, 10000, 65000);
+        }, 15000, 75000);
 
         scrollTimer.schedule(new TimerTask()
         {
@@ -319,7 +319,7 @@ public class Widget
                 int b = randomColor.nextInt(255);
                 linePanel.setBackground(new Color(r, g, b));
             }
-        }, 20000, 75000);
+        }, 30000, 75000);
 
         scrollTimer.schedule(new TimerTask()
         {
@@ -331,7 +331,7 @@ public class Widget
                 int b = randomColor.nextInt(255);
                 greenPanel.setBackground(new Color(r, g, b));
             }
-        }, 30000, 85000);
+        }, 45000, 75000);
 
         scrollTimer.schedule(new TimerTask()
         {
@@ -343,7 +343,7 @@ public class Widget
                 int b = randomColor.nextInt(255);
                 addGroup.setBackground(new Color(r, g, b));
             }
-        }, 40000, 95000);
+        }, 60000, 75000);
     }
 
     private JFrame frame = new JFrame("Widget");
